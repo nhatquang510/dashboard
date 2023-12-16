@@ -3,7 +3,8 @@
 export const barChartDataDailyTraffic = [
   {
     name: "Daily Traffic",
-    data: [20, 30, 40, 20, 45, 50, 30],
+    data:  [2701, 1767, 886, 2646],
+
   },
 ];
 
@@ -27,7 +28,8 @@ export const barChartOptionsDailyTraffic = {
     theme: "dark",
   },
   xaxis: {
-    categories: ["00", "04", "08", "12", "14", "16", "18"],
+    categories:  ["None", "Within 1 year", "1-3 years", "Over 3 years"],
+
     show: false,
     labels: {
       show: true,
@@ -254,8 +256,8 @@ export const pieChartData = [63, 25, 12];
 export const lineChartDataTotalSpent = [
 
   {
-    name: "Total",
-    data: [886, 2701, 2646, 1767],
+    name: "D Width_of_Nearby_Roads_(m)",
+    data: [11.898, 11.497, 11.464],
   },
 ];
 
@@ -301,7 +303,7 @@ export const lineChartOptionsTotalSpent = {
   },
   xaxis: {
     type: "numeric",
-    categories: ["1-3 years",	"None", "Over 3 years",	"Within 1 year"],
+    categories: ["Small", "Medium", "Large"],
     labels: {
       style: {
         colors: "#A3AED0",

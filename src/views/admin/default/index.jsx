@@ -32,17 +32,18 @@ import {
   useColorModeValue,
 } from "@chakra-ui/react";
 // Assets
-import Usa from "assets/img/dashboards/usa.png";
 // Custom components
 import MiniCalendar from "components/calendar/MiniCalendar";
 import MiniStatistics from "components/card/MiniStatistics";
 import IconBox from "components/icons/IconBox";
 import React from "react";
 import {
-  MdAddTask,
-  MdOutlineAccessAlarm,
-  MdExitToApp,
   MdFileCopy,
+  MdOutlineAccessAlarm,
+  MdFireExtinguisher,
+  MdExitToApp,
+  MdOutlineSocialDistance,
+  MdApartment,
 } from "react-icons/md";
 import CheckTable from "views/admin/default/components/CheckTable";
 import ComplexTable from "views/admin/default/components/ComplexTable";
@@ -96,27 +97,33 @@ export default function UserReports() {
           name='Number_of_Fire_Alarms'
           value='7.102'
         />
-        <MiniStatistics  name='Dataset' value='8,000' />
         <MiniStatistics
-          endContent={
-            <Flex me='-16px' mt='10px'>
-              <FormLabel htmlFor='balance'>
-                <Avatar src={Usa} />
-              </FormLabel>
-              <Select
-                id='balance'
-                variant='mini'
-                mt='5px'
-                me='0px'
-                defaultValue='usd'>
-                <option value='usd'>USD</option>
-                <option value='eur'>EUR</option>
-                <option value='gba'>GBA</option>
-              </Select>
-            </Flex>
+          startContent={
+            <IconBox
+              w='56px'
+              h='56px'
+              bg={boxBg}
+              icon={
+                <Icon w='32px' h='32px' as={MdFireExtinguisher} color={brandColor} />
+              }
+            />
           }
-          name='Your balance'
-          value='$1,000'
+          name='Number_of_Fire_Extinguishers'
+          value='5.935'
+        />
+        <MiniStatistics
+          startContent={
+            <IconBox
+              w='56px'
+              h='56px'
+              bg={boxBg}
+              icon={
+                <Icon w='32px' h='32px' as={MdApartment} color={brandColor} />
+              }
+            />
+          }
+          name='Number_of_floors'
+          value='7.5'
         />
         <MiniStatistics
           startContent={
@@ -124,11 +131,11 @@ export default function UserReports() {
               w='56px'
               h='56px'
               bg='linear-gradient(90deg, #4481EB 0%, #04BEFE 100%)'
-              icon={<Icon w='28px' h='28px' as={MdAddTask} color='white' />}
+              icon={<Icon w='28px' h='28px' as={MdOutlineSocialDistance} color='white' />}
             />
           }
-          name='New Tasks'
-          value='154'
+          name='Distance_to_Nearby_Buildings_(m)'
+          value='57.5'
         />
         <MiniStatistics
           startContent={
@@ -141,8 +148,8 @@ export default function UserReports() {
               }
             />
           }
-          name='Total Projects'
-          value='2935'
+          name='Dataset'
+          value='8,000'
         />
       </SimpleGrid>
 
@@ -163,8 +170,7 @@ export default function UserReports() {
           tableData={tableDataComplex}
         />
         <SimpleGrid columns={{ base: 1, md: 2, xl: 2 }} gap='20px'>
-          <Tasks />
-          <MiniCalendar h='100%' minW='100%' selectRange={false} />
+          
         </SimpleGrid>
       </SimpleGrid>
     </Box>

@@ -29,32 +29,12 @@ export default function DailyTraffic(props) {
               color='secondaryGray.600'
               fontSize='sm'
               fontWeight='500'>
-              Daily Traffic
+              Recent_Repair_Replacement_History
             </Text>
           </Flex>
-          <Flex align='end'>
-            <Text
-              color={textColor}
-              fontSize='34px'
-              fontWeight='700'
-              lineHeight='100%'>
-              2.579
-            </Text>
-            <Text
-              ms='6px'
-              color='secondaryGray.600'
-              fontSize='sm'
-              fontWeight='500'>
-              Visitors
-            </Text>
-          </Flex>
+
         </Flex>
-        <Flex align='center'>
-          <Icon as={RiArrowUpSFill} color='green.500' />
-          <Text color='green.500' fontSize='sm' fontWeight='700'>
-            +2.45%
-          </Text>
-        </Flex>
+        
       </Flex>
       <Box h='240px' mt='auto'>
         <BarChart
