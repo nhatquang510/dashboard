@@ -7,11 +7,13 @@ import {
   MdHome,
   MdLock,
   MdOutlineShoppingCart,
+  MdFireExtinguisher,
 } from "react-icons/md";
 
 // Admin Imports
 import MainDashboard from "views/admin/default";
 import NFTMarketplace from "views/admin/marketplace";
+import Prediction from "views/admin/prediction";
 import Profile from "views/admin/profile";
 import DataTables from "views/admin/dataTables";
 import RTL from "views/admin/rtl";
@@ -40,6 +42,21 @@ const routes = [
       />
     ),
     component: NFTMarketplace,
+    secondary: true,
+  },
+  {
+    name: "Fire Prediction",
+    layout: "/admin",
+    path: "/prediction",
+    icon: (
+      <Icon
+        as={MdFireExtinguisher}
+        width='20px'
+        height='20px'
+        color='inherit'
+      />
+    ),
+    component: Prediction,
     secondary: true,
   },
   {
