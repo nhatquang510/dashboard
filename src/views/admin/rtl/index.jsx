@@ -79,7 +79,7 @@ export default function UserReports() {
               }
             />
           }
-          name='Number_of_Emergency_Exits'
+          name='Number of Emergency Exits'
           value='55,270'
         />
         <MiniStatistics

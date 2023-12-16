@@ -1,31 +1,19 @@
 [{
-  "name":["Horizon UI PRO",false],
-  "quantity": 2458, 
-  "date": "12 Jan 2021",
-  "progress": 17.5  
+  "Month":[5],
+  "Building Type": "Residential", 
+  "Type of Fire": "Chemical",
+  "Number of People Rescued": 5 
 },
 {
-  "name":["Horizon UI Free",true],
-  "quantity": 1485, 
-  "date": "21 Feb 2021",
-  "progress": 10.8  
+  "Month":[10],
+  "Building Type": "Residential", 
+  "Type of Fire": "Chemical",
+  "Number of People Rescued": 36
 },
 {
-  "name":["Weekly Update",true],
-  "quantity": 1024, 
-  "date": "13 Mar 2021",
-  "progress": 21.3  
-},
-{
-  "name":["Venus 3D Asset",true],
-  "quantity": 858, 
-  "date": "24 Jan 2021",
-  "progress": 31.5  
-},
-{
-  "name":["Marketplace",false],
-  "quantity": 258, 
-  "date": "24 Oct 2022",
-  "progress": 12.2  
+  "Month":[8],
+  "Building Type": "Commercial", 
+  "Type of Fire": "Negligence",
+  "Number of People Rescued": 27
 }
 ]

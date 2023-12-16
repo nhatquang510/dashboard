@@ -29,7 +29,7 @@ export default function DailyTraffic(props) {
               color='secondaryGray.600'
               fontSize='sm'
               fontWeight='500'>
-              Recent_Repair_Replacement_History
+              Recent Repair Replacement History
             </Text>
           </Flex>
 

@@ -61,7 +61,7 @@ export default function TotalSpent(props) {
               fontWeight='500'
               mt='4px'
               me='12px'>
-              Width_of_Nearby_Roads_(m) vs Damage Scale
+              Width of Nearby Roads (m) vs Damage Scale
             </Text>
             
           </Flex>

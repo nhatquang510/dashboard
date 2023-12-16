@@ -80,7 +80,7 @@ export default function UserReports() {
               }
             />
           }
-          name='Number_of_Emergency_Exits'
+          name='Number of Emergency Exits'
           value='6.909'
         />
         <MiniStatistics
@@ -94,7 +94,7 @@ export default function UserReports() {
               }
             />
           }
-          name='Number_of_Fire_Alarms'
+          name='Number of Fire Alarms'
           value='7.102'
         />
         <MiniStatistics
@@ -108,7 +108,7 @@ export default function UserReports() {
               }
             />
           }
-          name='Number_of_Fire_Extinguishers'
+          name='Number of Fire Extinguishers'
           value='5.935'
         />
         <MiniStatistics
@@ -122,7 +122,7 @@ export default function UserReports() {
               }
             />
           }
-          name='Number_of_floors'
+          name='Average number of floors'
           value='7.5'
         />
         <MiniStatistics
@@ -134,7 +134,7 @@ export default function UserReports() {
               icon={<Icon w='28px' h='28px' as={MdOutlineSocialDistance} color='white' />}
             />
           }
-          name='Distance_to_Nearby_Buildings_(m)'
+          name='Average distance to Nearby Buildings (m)'
           value='57.5'
         />
         <MiniStatistics
@@ -148,7 +148,7 @@ export default function UserReports() {
               }
             />
           }
-          name='Dataset'
+          name='Total count'
           value='8,000'
         />
       </SimpleGrid>
@@ -164,7 +164,7 @@ export default function UserReports() {
           <PieCard />
         </SimpleGrid>
       </SimpleGrid>
-      <SimpleGrid columns={{ base: 1, md: 1, xl: 2 }} gap='20px' mb='20px'>
+      {/* <SimpleGrid columns={{ base: 1, md: 1, xl: 2 }} gap='20px' mb='20px'>
         <ComplexTable
           columnsData={columnsDataComplex}
           tableData={tableDataComplex}
@@ -172,7 +172,7 @@ export default function UserReports() {
         <SimpleGrid columns={{ base: 1, md: 2, xl: 2 }} gap='20px'>
           
         </SimpleGrid>
-      </SimpleGrid>
+      </SimpleGrid> */}
     </Box>
   );
 }

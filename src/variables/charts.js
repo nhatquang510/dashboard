@@ -109,16 +109,16 @@ export const barChartOptionsDailyTraffic = {
 
 export const barChartDataConsumption = [
   {
-    name: "PRODUCT A",
-    data: [400, 370, 330, 390, 320, 350, 360, 320, 380],
+    name: "Small Damage",
+    data: [334, 175, 313, 357, 368, 360, 337, 312, 209, 148, 80, 73],
   },
   {
-    name: "PRODUCT B",
-    data: [400, 370, 330, 390, 320, 350, 360, 320, 380],
+    name: "Medium Damage",
+    data: [123, 97, 126, 160, 163, 175, 172, 153, 105, 68, 53, 70],
   },
   {
-    name: "PRODUCT C",
-    data: [400, 370, 330, 390, 320, 350, 360, 320, 380],
+    name: "Large Damage",
+    data: [327, 230, 275, 401, 398, 436, 419, 323, 241, 167, 102, 150],
   },
 ];
 
@@ -143,7 +143,7 @@ export const barChartOptionsConsumption = {
     theme: "dark",
   },
   xaxis: {
-    categories: ["17", "18", "19", "20", "21", "22", "23", "24", "25"],
+    categories: ["1", "2", "3", "4", "5", "6", "7", "8", "9", "10", "11", "12"],
     show: false,
     labels: {
       show: true,
@@ -211,8 +211,8 @@ export const barChartOptionsConsumption = {
 };
 
 export const pieChartOptions = {
-  labels: ["Your files", "System", "Empty"],
-  colors: ["#4318FF", "#6AD2FF", "#EFF4FB"],
+  labels: ["Small", "Medium", "Large"],
+  colors: ["#6AD2FF", "#5E37FF", "#4A235A"],
   chart: {
     width: "50px",
   },
@@ -241,7 +241,7 @@ export const pieChartOptions = {
     },
   },
   fill: {
-    colors: ["#4318FF", "#6AD2FF", "#EFF4FB"],
+    colors: ["#6AD2FF", "#5E37FF", "#4A235A"],
   },
   tooltip: {
     enabled: true,
@@ -249,14 +249,14 @@ export const pieChartOptions = {
   },
 };
 
-export const pieChartData = [63, 25, 12];
+export const pieChartData = [38.33, 18.31, 43.36];
 
 // Total Spent Default
 
 export const lineChartDataTotalSpent = [
 
   {
-    name: "D Width_of_Nearby_Roads_(m)",
+    name: "Width of Nearby Roads (m)",
     data: [11.898, 11.497, 11.464],
   },
 ];
