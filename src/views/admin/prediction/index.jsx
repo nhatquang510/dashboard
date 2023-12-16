@@ -16,7 +16,7 @@ import {
     Text,
     Select,
 } from "@chakra-ui/react";
-
+import axios from "axios";
 import { Formik, Form, Field } from 'formik';
 
 export default function Prediction() {
@@ -32,26 +32,36 @@ export default function Prediction() {
                     nearest_fire_station_location: 'North',
                     types_of_nearby_buildings: 'Residential',
                     electrical_equipment_inspection_conducted: 'Yes',
+                    gas_equipment_inspection_conducted: 'Yes',
+                    recent_repair_replacement_history: 'Over 3 years',
                     month: 5,
                     building_age: 20,
-                    building_area: 665,
-                    building_height: 5,
+                    building_area_sqm: 665,
+                    building_height_m: 5,
                     number_of_floors: 1,
                     number_of_emergency_exits: 2,
                     number_of_fire_alarms: 2,
-                    number_of_nearby_roads: 10,
-                    distance_of_nearby_buildings: 20,
-                    temperature: 25,
+                    width_of_nearby_roads_m: 10,
+                    distance_to_nearby_buildings_m: 20,
+                    temperature_c: 25,
                     humidity: 60,
-                    wind_speed: 4.16,
-                    precipitation: 10.45
+                    wind_speed_ms: 4.16,
+                    precipitation_mm: 10.45
                 }}
                 onSubmit={(values, actions) => {
                     setTimeout(() => {
-                        alert(JSON.stringify(values, null, 2))
-                        actions.setSubmitting(false)
-                        setReturnProb(0.5);
-                    }, 1000)
+                        actions.setSubmitting(false);
+                        axios
+                            .post("http://144.126.242.191:36000/predict", values, {
+                                headers: {
+                                    'Content-Type': 'application/x-www-form-urlencoded'
+                                }
+                            })
+                            .then((response) => {
+                                console.log(response);
+                                setReturnProb(response.data["Result"]);
+                            });
+                    }, 400);
                 }}
             >
                 {(props) => (
@@ -129,6 +139,30 @@ export default function Prediction() {
                         </Field>
                         <Field>
                             {({ field, form }) => (
+                                <FormControl name="gas_equipment_inspection_conducted" id="gas_equipment_inspection_conducted" style={{ marginBottom: "10px" }} htmlFor="gas_equipment_inspection_conducted">
+                                    <FormLabel>Gas Equipment Inspection Conducted</FormLabel>
+                                    <Select name="gas_equipment_inspection_conducted" id="gas_equipment_inspection_conducted" onChange={props.handleChange} placeholder='Select if the gas equipment inspection is conducted' defaultValue='Yes'>
+                                        <option>Yes</option>
+                                        <option>No</option>
+                                    </Select>
+                                </FormControl>
+                            )}
+                        </Field>
+                        <Field>
+                            {({ field, form }) => (
+                                <FormControl name="recent_repair_replacement_history" id="recent_repair_replacement_history" style={{ marginBottom: "10px" }} htmlFor="recent_repair_replacement_history">
+                                    <FormLabel>Recent Repair Replacement History</FormLabel>
+                                    <Select name="recent_repair_replacement_history" id="recent_repair_replacement_history" onChange={props.handleChange} placeholder='Select the last year of repairment' defaultValue='Over 3 years'>
+                                        <option>None</option>
+                                        <option>Over 3 years</option>
+                                        <option>Within 1 year</option>
+                                        <option>1-3 years</option>
+                                    </Select>
+                                </FormControl>
+                            )}
+                        </Field>
+                        <Field>
+                            {({ field, form }) => (
                                 <FormControl name="month" id="month" onChange={props.handleChange} style={{ marginBottom: "10px" }} htmlFor="month">
                                     <FormLabel>Month</FormLabel>
                                     <NumberInput max={12} min={1} defaultValue={5} name="month" id="month" onChange={props.handleChange}>
@@ -151,7 +185,7 @@ export default function Prediction() {
                         </Field>
                         <Field>
                             {({ field, form }) => (
-                                <FormControl name="building_area" id="building_area" onChange={props.handleChange} style={{ marginBottom: "10px" }} htmlFor="building_area">
+                                <FormControl name="building_area_sqm" id="building_area_sqm" onChange={props.handleChange} style={{ marginBottom: "10px" }} htmlFor="building_area_sqm">
                                     <FormLabel>Building area (sqm)</FormLabel>
                                     <Input type='number' defaultValue={665} />
                                 </FormControl>
@@ -159,7 +193,7 @@ export default function Prediction() {
                         </Field>
                         <Field>
                             {({ field, form }) => (
-                                <FormControl name="building_height" id="building_height" onChange={props.handleChange} style={{ marginBottom: "10px" }} htmlFor="building_height">
+                                <FormControl name="building_height_m" id="building_height_m" onChange={props.handleChange} style={{ marginBottom: "10px" }} htmlFor="building_height_m">
                                     <FormLabel>Building height (m)</FormLabel>
                                     <Input type='number' defaultValue={5} />
                                 </FormControl>
@@ -203,7 +237,7 @@ export default function Prediction() {
                         </Field>
                         <Field>
                             {({ field, form }) => (
-                                <FormControl name="number_of_nearby_roads" id="number_of_nearby_roads" onChange={props.handleChange} style={{ marginBottom: "10px" }} htmlFor="number_of_nearby_roads">
+                                <FormControl name="width_of_nearby_roads_m" id="width_of_nearby_roads_m" onChange={props.handleChange} style={{ marginBottom: "10px" }} htmlFor="width_of_nearby_roads_m">
                                     <FormLabel>Number of nearby roads</FormLabel>
                                     <Input type='number' defaultValue={10} />
                                 </FormControl>
@@ -211,7 +245,7 @@ export default function Prediction() {
                         </Field>
                         <Field>
                             {({ field, form }) => (
-                                <FormControl name="distance_of_nearby_buildings" id="distance_of_nearby_buildings" onChange={props.handleChange} style={{ marginBottom: "10px" }} htmlFor="distance_of_nearby_buildings">
+                                <FormControl name="distance_to_nearby_buildings_m" id="distance_to_nearby_buildings_m" onChange={props.handleChange} style={{ marginBottom: "10px" }} htmlFor="distance_to_nearby_buildings_m">
                                     <FormLabel>Distance of nearby buildings (m)</FormLabel>
                                     <Input type='number' defaultValue={20} />
                                 </FormControl>
@@ -219,7 +253,7 @@ export default function Prediction() {
                         </Field>
                         <Field>
                             {({ field, form }) => (
-                                <FormControl name="temperature" id="temperature" onChange={props.handleChange} style={{ marginBottom: "10px" }} htmlFor="temperature">
+                                <FormControl name="temperature_c" id="temperature_c" onChange={props.handleChange} style={{ marginBottom: "10px" }} htmlFor="temperature_c">
                                     <FormLabel>Temperature (C)</FormLabel>
                                     <Input type='number' defaultValue={25}/>
                                 </FormControl>
@@ -235,7 +269,7 @@ export default function Prediction() {
                         </Field>
                         <Field>
                             {({ field, form }) => (
-                                <FormControl name="wind_speed" id="wind_speed" onChange={props.handleChange} style={{ marginBottom: "10px" }} htmlFor="wind_speed">
+                                <FormControl name="wind_speed_ms" id="wind_speed_ms" onChange={props.handleChange} style={{ marginBottom: "10px" }} htmlFor="wind_speed_ms">
                                     <FormLabel>Wind Speed (m/s)</FormLabel>
                                     <Input type='number' defaultValue={4.16} />
                                 </FormControl>
@@ -243,7 +277,7 @@ export default function Prediction() {
                         </Field>
                         <Field>
                             {({ field, form }) => (
-                                <FormControl name="precipitation" id="precipitation" onChange={props.handleChange} style={{ marginBottom: "10px" }} htmlFor="precipitation">
+                                <FormControl name="precipitation_mm" id="precipitation_mm" onChange={props.handleChange} style={{ marginBottom: "10px" }} htmlFor="precipitation_mm">
                                     <FormLabel>Precipitation (mm)</FormLabel>
                                     <Input type='float' defaultValue={10.45} />
                                 </FormControl>
@@ -263,7 +297,7 @@ export default function Prediction() {
             {
                 returnProb != null &&
                 <Box>
-                    <Text style={{margin: "10px"}}>Probability of fire occuring: {returnProb}</Text>
+                    <Text style={{margin: "10px"}}>Probability of small, medium and large damage scale of fire is respectively: {returnProb}</Text>
                 </Box>
             }
         </Box>
