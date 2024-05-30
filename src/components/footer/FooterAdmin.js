@@ -38,7 +38,7 @@ export default function Footer() {
         {" "}
         &copy; {1900 + new Date().getYear()}
         <Text as='span' fontWeight='500' ms='4px'>
-          Fire Dashboard Demo. All Rights Reserved.
+          Credit rating demo. All Rights Reserved.
         </Text>
       </Text>
       {/* <List display='flex'>

@@ -26,7 +26,7 @@ export default function Conversion(props) {
         w='100%'
         mb='8px'>
         <Text color={textColor} fontSize='md' fontWeight='600' mt='4px'>
-          Damage Scale
+          Credit Scoring
         </Text>
         {/* <Select
           fontSize='sm'
@@ -52,7 +52,7 @@ export default function Conversion(props) {
         boxShadow={cardShadow}
         w='100%'
         p='15px'
-        px='20px'
+        px='40px'
         mt='15px'
         mx='auto'>
         <Flex direction='column' py='5px'>
@@ -63,11 +63,11 @@ export default function Conversion(props) {
               color='secondaryGray.600'
               fontWeight='700'
               mb='5px'>
-              Small
+              Good
             </Text>
           </Flex>
           <Text fontSize='lg' color={textColor} fontWeight='700'>
-            38.33%
+            70%
           </Text>
         </Flex>
         <VSeparator mx={{ base: "5px", xl: "5px", "2xl": "5px" }} />
@@ -79,27 +79,11 @@ export default function Conversion(props) {
               color='secondaryGray.600'
               fontWeight='700'
               mb='5px'>
-              Medium
+              Bad
             </Text>
           </Flex>
           <Text fontSize='lg' color={textColor} fontWeight='700'>
-            18.31%
-          </Text>
-        </Flex>
-        <VSeparator mx={{ base: "5px", xl: "5px", "2xl": "5px" }} />
-        <Flex direction='column' py='5px' me='10px'>
-          <Flex align='center'>
-            <Box h='8px' w='8px' bg='#4A235A' borderRadius='50%' me='4px' />
-            <Text
-              fontSize='xs'
-              color='secondaryGray.600'
-              fontWeight='700'
-              mb='5px'>
-              Large
-            </Text>
-          </Flex>
-          <Text fontSize='lg' color={textColor} fontWeight='700'>
-            43.36%
+            30%
           </Text>
         </Flex>
       </Card>

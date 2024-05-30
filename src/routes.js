@@ -45,7 +45,7 @@ const routes = [
   //   secondary: true,
   // },
   {
-    name: "Fire Prediction",
+    name: "Credit Prediction",
     layout: "/admin",
     path: "/prediction",
     icon: (

@@ -211,10 +211,10 @@ export const barChartOptionsConsumption = {
 };
 
 export const pieChartOptions = {
-  labels: ["Small", "Medium", "Large"],
-  colors: ["#6AD2FF", "#5E37FF", "#4A235A"],
+  labels: ["Good", "Bad"],
+  colors: ["#6AD2FF", "#5E37FF"],
   chart: {
-    width: "50px",
+    width: "100px",
   },
   states: {
     hover: {
@@ -241,7 +241,7 @@ export const pieChartOptions = {
     },
   },
   fill: {
-    colors: ["#6AD2FF", "#5E37FF", "#4A235A"],
+    colors: ["#6AD2FF", "#5E37FF"],
   },
   tooltip: {
     enabled: true,
@@ -249,7 +249,7 @@ export const pieChartOptions = {
   },
 };
 
-export const pieChartData = [38.33, 18.31, 43.36];
+export const pieChartData = [70.0, 30.0];
 
 // Total Spent Default
 

@@ -53,7 +53,7 @@ export default function SidebarDocs() {
           px='10px'
           mt="10px"
           mb='6px'>
-          Fire Dashboard Demo
+          Credit rating Demo
         </Text>
         <Text
           fontSize='14px'
@@ -62,7 +62,7 @@ export default function SidebarDocs() {
           px='10px'
           mb='6px'
           textAlign='center'>
-          It is a demo website of Hanoi fire data
+          It is a demo website for our project in the course ML-20223
         </Text>
       </Flex>
       {/* <Link href='https://horizon-ui.com/pro?ref=horizon-chakra-free'>

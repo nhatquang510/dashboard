@@ -30,6 +30,7 @@ import {
   Select,
   SimpleGrid,
   useColorModeValue,
+  Tabs, TabList, TabPanels, Tab, TabPanel, Image, Container
 } from "@chakra-ui/react";
 // Assets
 // Custom components
@@ -47,6 +48,7 @@ import {
 import CheckTable from "views/admin/default/components/CheckTable";
 import DailyTraffic from "views/admin/default/components/DailyTraffic";
 import PieCard from "views/admin/default/components/PieCard";
+import RadarChart from "views/admin/default/components/RadarChart";
 import TotalSpent from "views/admin/default/components/TotalSpent";
 import WeeklyRevenue from "views/admin/default/components/WeeklyRevenue";
 import {
@@ -55,120 +57,96 @@ import {
 } from "views/admin/default/variables/columnsData";
 import tableDataCheck from "views/admin/default/variables/tableDataCheck.json";
 
+const data = {
+  labels: ['Accuracy', 'Precision', 'Recall', 'F1', 'AUC'],
+  datasets: [
+    {
+      label: 'Logistic Regression',
+      data: [65, 59, 90, 81, 56],
+      fill: true,
+      backgroundColor: 'rgba(75, 192, 192, 0.2)',
+      borderColor: 'rgb(75, 192, 192)',
+      pointBackgroundColor: 'rgb(75, 192, 192)',
+      pointBorderColor: '#fff',
+      pointHoverBackgroundColor: '#fff',
+      pointHoverBorderColor: 'rgb(75, 192, 192)',
+    },
+    {
+      label: 'Random Forest',
+      data: [70, 65, 85, 75, 60], // Example data for Random Forest
+      fill: true,
+      backgroundColor: 'rgba(255, 99, 132, 0.2)',
+      borderColor: 'rgb(255, 99, 132)',
+      pointBackgroundColor: 'rgb(255, 99, 132)',
+      pointBorderColor: '#fff',
+      pointHoverBackgroundColor: '#fff',
+      pointHoverBorderColor: 'rgb(255, 99, 132)',
+    },
+    {
+      label: 'kNN',
+      data: [75, 70, 80, 78, 65], // Example data for kNN
+      fill: true,
+      backgroundColor: 'rgba(54, 162, 235, 0.2)',
+      borderColor: 'rgb(54, 162, 235)',
+      pointBackgroundColor: 'rgb(54, 162, 235)',
+      pointBorderColor: '#fff',
+      pointHoverBackgroundColor: '#fff',
+      pointHoverBorderColor: 'rgb(54, 162, 235)',
+    },
+    {
+      label: 'XGBoost',
+      data: [72, 68, 82, 76, 62], // Example data for XGBoost
+      fill: true,
+      backgroundColor: 'rgba(255, 205, 86, 0.2)',
+      borderColor: 'rgb(255, 205, 86)',
+      pointBackgroundColor: 'rgb(255, 205, 86)',
+      pointBorderColor: '#fff',
+      pointHoverBackgroundColor: '#fff',
+      pointHoverBorderColor: 'rgb(255, 205, 86)',
+    },
+    {
+      label: 'LightGBM',
+      data: [78, 72, 88, 80, 70], // Example data for LightGBM
+      fill: true,
+      backgroundColor: 'rgba(153, 102, 255, 0.2)',
+      borderColor: 'rgb(153, 102, 255)',
+      pointBackgroundColor: 'rgb(153, 102, 255)',
+      pointBorderColor: '#fff',
+      pointHoverBackgroundColor: '#fff',
+      pointHoverBorderColor: 'rgb(153, 102, 255)',
+    },
+    {
+      label: 'Neural Network',
+      data: [80, 75, 85, 82, 75], // Example data for Neural Network
+      fill: true,
+      backgroundColor: 'rgba(255, 159, 64, 0.2)',
+      borderColor: 'rgb(255, 159, 64)',
+      pointBackgroundColor: 'rgb(255, 159, 64)',
+      pointBorderColor: '#fff',
+      pointHoverBackgroundColor: '#fff',
+      pointHoverBorderColor: 'rgb(255, 159, 64)',
+    },
+  ],
+};
+
+
+
 export default function UserReports() {
   // Chakra Color Mode
   const brandColor = useColorModeValue("brand.500", "white");
   const boxBg = useColorModeValue("secondaryGray.300", "whiteAlpha.100");
   return (
     <Box pt={{ base: "130px", md: "80px", xl: "80px" }}>
-      <SimpleGrid
-        columns={{ base: 1, md: 2, lg: 3, "2xl": 6 }}
-        gap='20px'
-        mb='20px'>
-        <MiniStatistics
-          startContent={
-            <IconBox
-              w='56px'
-              h='56px'
-              bg={boxBg}
-              icon={
-                <Icon w='32px' h='32px' as={MdExitToApp} color={brandColor} />
-              }
-            />
-          }
-          name='Number of Emergency Exits'
-          value='6.909'
-        />
-        <MiniStatistics
-          startContent={
-            <IconBox
-              w='56px'
-              h='56px'
-              bg={boxBg}
-              icon={
-                <Icon w='32px' h='32px' as={MdOutlineAccessAlarm} color={brandColor} />
-              }
-            />
-          }
-          name='Number of Fire Alarms'
-          value='7.102'
-        />
-        <MiniStatistics
-          startContent={
-            <IconBox
-              w='56px'
-              h='56px'
-              bg={boxBg}
-              icon={
-                <Icon w='32px' h='32px' as={MdFireExtinguisher} color={brandColor} />
-              }
-            />
-          }
-          name='Number of Fire Extinguishers'
-          value='5.935'
-        />
-        <MiniStatistics
-          startContent={
-            <IconBox
-              w='56px'
-              h='56px'
-              bg={boxBg}
-              icon={
-                <Icon w='32px' h='32px' as={MdApartment} color={brandColor} />
-              }
-            />
-          }
-          name='Average number of floors'
-          value='7.5'
-        />
-        <MiniStatistics
-          startContent={
-            <IconBox
-              w='56px'
-              h='56px'
-              bg='linear-gradient(90deg, #4481EB 0%, #04BEFE 100%)'
-              icon={<Icon w='28px' h='28px' as={MdOutlineSocialDistance} color='white' />}
-            />
-          }
-          name='Average distance to Nearby Buildings (m)'
-          value='57.5'
-        />
-        <MiniStatistics
-          startContent={
-            <IconBox
-              w='56px'
-              h='56px'
-              bg={boxBg}
-              icon={
-                <Icon w='32px' h='32px' as={MdFileCopy} color={brandColor} />
-              }
-            />
-          }
-          name='Total count'
-          value='8,000'
-        />
-      </SimpleGrid>
 
-      <SimpleGrid columns={{ base: 1, md: 2, xl: 2 }} gap='20px' mb='20px'>
-        <TotalSpent />
-        <WeeklyRevenue />
-      </SimpleGrid>
       <SimpleGrid columns={{ base: 1, md: 1, xl: 2 }} gap='20px' mb='20px'>
-        <CheckTable columnsData={columnsDataCheck} tableData={tableDataCheck} />
         <SimpleGrid columns={{ base: 1, md: 2, xl: 2 }} gap='20px'>
-          <DailyTraffic />
           <PieCard />
         </SimpleGrid>
       </SimpleGrid>
-      {/* <SimpleGrid columns={{ base: 1, md: 1, xl: 2 }} gap='20px' mb='20px'>
-        <ComplexTable
-          columnsData={columnsDataComplex}
-          tableData={tableDataComplex}
-        />
-        <SimpleGrid columns={{ base: 1, md: 2, xl: 2 }} gap='20px'>
-          
-        </SimpleGrid>
-      </SimpleGrid> */}
+
+      <Container maxW="container.xl" p={5}>
+        <RadarChart data={data} />
+      </Container>
     </Box>
   );
 }
