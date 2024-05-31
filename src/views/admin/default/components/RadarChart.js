@@ -33,6 +33,15 @@ const RadarChart = ({ data }) => {
         text: 'Algorithm Performance',
       },
     },
+    scales: {
+        r: {
+            angleLines: {
+                display: false
+            },
+            suggestedMin: 50,
+            suggestedMax: 100
+        }
+    }
   };
 
   return (
