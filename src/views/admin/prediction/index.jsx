@@ -70,7 +70,7 @@ export default function Prediction() {
                     setTimeout(() => {
                         actions.setSubmitting(false);
                         axios
-                            .post("http://127.0.0.1:5000/", values)
+                            .post("https://ml-20232-server.onrender.com", values)
                             .then((response) => {
                                 console.log(response);
                                 setReturnProb(response.data);                                
