@@ -30,10 +30,11 @@ import {
   Select,
   SimpleGrid,
   useColorModeValue,
-  Tabs, TabList, TabPanels, Tab, TabPanel, Image, Container
+  Tabs, TabList, TabPanels, Tab, TabPanel, Image, Container, Heading
 } from "@chakra-ui/react";
 // Assets
 // Custom components
+import {useEffect, useState} from "react"
 import MiniStatistics from "components/card/MiniStatistics";
 import IconBox from "components/icons/IconBox";
 import React from "react";
@@ -49,6 +50,7 @@ import CheckTable from "views/admin/default/components/CheckTable";
 import DailyTraffic from "views/admin/default/components/DailyTraffic";
 import PieCard from "views/admin/default/components/PieCard";
 import RadarChart from "views/admin/default/components/RadarChart";
+import ConfusionMatrix from "views/admin/default/components/ConfusionMatrix";
 import TotalSpent from "views/admin/default/components/TotalSpent";
 import WeeklyRevenue from "views/admin/default/components/WeeklyRevenue";
 import {
@@ -56,8 +58,9 @@ import {
   columnsDataComplex,
 } from "views/admin/default/variables/columnsData";
 import tableDataCheck from "views/admin/default/variables/tableDataCheck.json";
+import axios from "axios";
 
-const data = {
+const default_data = {
   labels: ['Accuracy', 'Precision', 'Recall', 'F1', 'AUC'],
   datasets: [
     {
@@ -70,6 +73,11 @@ const data = {
       pointBorderColor: '#fff',
       pointHoverBackgroundColor: '#fff',
       pointHoverBorderColor: 'rgb(75, 192, 192)',
+      matrix: [
+        [50, 10, 5],
+        [8, 45, 7],
+        [4, 6, 60]
+      ]
     },
     {
       label: 'Random Forest',
@@ -81,6 +89,11 @@ const data = {
       pointBorderColor: '#fff',
       pointHoverBackgroundColor: '#fff',
       pointHoverBorderColor: 'rgb(255, 99, 132)',
+      matrix: [
+        [50, 10, 5],
+        [8, 45, 7],
+        [4, 6, 60]
+      ]
     },
     {
       label: 'kNN',
@@ -92,6 +105,11 @@ const data = {
       pointBorderColor: '#fff',
       pointHoverBackgroundColor: '#fff',
       pointHoverBorderColor: 'rgb(54, 162, 235)',
+      matrix: [
+        [50, 10, 5],
+        [8, 45, 7],
+        [4, 6, 60]
+      ]
     },
     {
       label: 'XGBoost',
@@ -103,6 +121,11 @@ const data = {
       pointBorderColor: '#fff',
       pointHoverBackgroundColor: '#fff',
       pointHoverBorderColor: 'rgb(255, 205, 86)',
+      matrix: [
+        [50, 10, 5],
+        [8, 45, 7],
+        [4, 6, 60]
+      ]
     },
     {
       label: 'LightGBM',
@@ -114,6 +137,11 @@ const data = {
       pointBorderColor: '#fff',
       pointHoverBackgroundColor: '#fff',
       pointHoverBorderColor: 'rgb(153, 102, 255)',
+      matrix: [
+        [50, 10, 5],
+        [8, 45, 7],
+        [4, 6, 60]
+      ]
     },
     {
       label: 'Neural Network',
@@ -125,16 +153,30 @@ const data = {
       pointBorderColor: '#fff',
       pointHoverBackgroundColor: '#fff',
       pointHoverBorderColor: 'rgb(255, 159, 64)',
+      matrix: [
+        [50, 10, 5],
+        [8, 45, 7],
+        [4, 6, 60]
+      ]
     },
   ],
 };
-
-
 
 export default function UserReports() {
   // Chakra Color Mode
   const brandColor = useColorModeValue("brand.500", "white");
   const boxBg = useColorModeValue("secondaryGray.300", "whiteAlpha.100");
+  const [data, setData] = useState(default_data)
+
+  useEffect(() => {
+    axios.get('http://127.0.0.1:5000/')
+          .then((response) => {
+              console.log(response);
+              setData(response.data);                     
+              })
+          .catch((err) => console.error(err));
+  })
+
   return (
     <Box pt={{ base: "130px", md: "80px", xl: "80px" }}>
 
@@ -147,6 +189,56 @@ export default function UserReports() {
       <Container maxW="container.xl" p={5}>
         <RadarChart data={data} />
       </Container>
+
+      <Tabs isFitted variant='enclosed'>
+        <TabList mb='1em'>
+          <Tab>Logistic Regression</Tab>
+          <Tab>Random Forest</Tab>
+          <Tab>kNN</Tab>
+          <Tab>XGBoost</Tab>
+          <Tab>LightGBM</Tab>
+          <Tab>Neural Network</Tab>
+        </TabList>
+        <TabPanels>
+          <TabPanel>
+            <Box p={5}>
+              <Heading mb={6}>Confusion Matrix of {data.datasets[0].label}</Heading>
+              <ConfusionMatrix matrix={data.datasets[0].matrix} />
+            </Box>
+          </TabPanel>
+          <TabPanel>
+            <Box p={5}>
+              <Heading mb={6}>Confusion Matrix of {data.datasets[1].label}</Heading>
+              <ConfusionMatrix matrix={data.datasets[1].matrix} />
+            </Box>
+          </TabPanel>
+          <TabPanel>
+            <Box p={5}>
+              <Heading mb={6}>Confusion Matrix of {data.datasets[2].label}</Heading>
+              <ConfusionMatrix matrix={data.datasets[2].matrix} />
+            </Box>
+          </TabPanel>
+          <TabPanel>
+            <Box p={5}>
+              <Heading mb={6}>Confusion Matrix of {data.datasets[3].label}</Heading>
+              <ConfusionMatrix matrix={data.datasets[3].matrix} />
+            </Box>
+          </TabPanel>
+          <TabPanel>
+            <Box p={5}>
+              <Heading mb={6}>Confusion Matrix of {data.datasets[4].label}</Heading>
+              <ConfusionMatrix matrix={data.datasets[4].matrix} />
+            </Box>
+          </TabPanel>
+          <TabPanel>
+            <Box p={5}>
+              <Heading mb={6}>Confusion Matrix of {data.datasets[5].label}</Heading>
+              <ConfusionMatrix matrix={data.datasets[5].matrix} />
+            </Box>
+          </TabPanel>
+        </TabPanels>
+      </Tabs>
     </Box>
-  );
+  ); //cuối_return
+  // useEffect vào đây
 }

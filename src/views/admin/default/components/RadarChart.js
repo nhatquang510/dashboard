@@ -34,14 +34,14 @@ const RadarChart = ({ data }) => {
       },
     },
     scales: {
-        r: {
-            angleLines: {
-                display: false
-            },
-            suggestedMin: 50,
-            suggestedMax: 100
-        }
-    }
+          r: {
+              angleLines: {
+                  display: false
+              },
+              suggestedMin: 50,
+              suggestedMax: 100
+          }
+      }
   };
 
   return (
