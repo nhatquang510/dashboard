@@ -38,8 +38,8 @@ const RadarChart = ({ data }) => {
               angleLines: {
                   display: false
               },
-              suggestedMin: 50,
-              suggestedMax: 100
+              suggestedMin: 0.5,
+              suggestedMax: 1.0
           }
       }
   };

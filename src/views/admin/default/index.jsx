@@ -175,7 +175,7 @@ export default function UserReports() {
               setData(response.data);                     
               })
           .catch((err) => console.error(err));
-  })
+  }, [])
 
   return (
     <Box pt={{ base: "130px", md: "80px", xl: "80px" }}>
