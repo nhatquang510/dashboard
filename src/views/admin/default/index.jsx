@@ -81,7 +81,7 @@ const default_data = {
     },
     {
       label: 'Random Forest',
-      data: [70, 65, 85, 75, 60], // Example data for Random Forest
+      data: [0.70, 0.65, 0.85, 0.75, 0.60], // Example data for Random Forest
       fill: true,
       backgroundColor: 'rgba(255, 99, 132, 0.2)',
       borderColor: 'rgb(255, 99, 132)',

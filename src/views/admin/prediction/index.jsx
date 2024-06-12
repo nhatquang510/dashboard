@@ -226,9 +226,14 @@ export default function Prediction() {
 
                         <Field>
                             {({ field, form }) => (
-                                <FormControl name="most_valuable_asset" id="most_valuable_asset" onChange={props.handleChange} style={{ marginBottom: "10px" }} htmlFor="most_valuable_asset">
-                                    <FormLabel>Most valuable asset</FormLabel>
-                                    <Input type='number' defaultValue='1' />
+                                <FormControl name="most_valuable_asset" id="most_valuable_asset"  style={{ marginBottom: "10px" }} htmlFor="most_valuable_asset">
+                                    <FormLabel>Most Valuable asset</FormLabel>
+                                    <Select name="most_valuable_asset" id="most_valuable_asset" onChange={props.handleChange} placeholder='Select the most valuable asset' defaultValue='1'>
+                                        <option value='1'>None</option>
+                                        <option value='2'>Car</option>
+                                        <option value='3'>Life Insurance</option>
+                                        <option value='4'>Real Estate</option>
+                                    </Select>
                                 </FormControl>
                             )}
                         </Field>
@@ -256,9 +261,13 @@ export default function Prediction() {
 
                         <Field>
                             {({ field, form }) => (
-                                <FormControl name="type_of_apartment" id="type_of_apartment" onChange={props.handleChange} style={{ marginBottom: "10px" }} htmlFor="type_of_apartment">
-                                    <FormLabel>Type of department</FormLabel>
-                                    <Input type='number' defaultValue='1' />
+                                <FormControl name="type_of_apartment" id="type_of_apartment"  style={{ marginBottom: "10px" }} htmlFor="type_of_apartment">
+                                    <FormLabel>Type of apartment</FormLabel>
+                                    <Select name="type_of_apartment" id="type_of_apartment" onChange={props.handleChange} placeholder='Select the type of apartment' defaultValue='1'>
+                                        <option value='1'>Free</option>
+                                        <option value='2'>Rented</option>
+                                        <option value='3'>Own</option>
+                                    </Select>
                                 </FormControl>
                             )}
                         </Field>
@@ -290,9 +299,12 @@ export default function Prediction() {
 
                         <Field>
                             {({ field, form }) => (
-                                <FormControl name="telephone" id="telephone" onChange={props.handleChange} style={{ marginBottom: "10px" }} htmlFor="telephone" >
+                                <FormControl name="telephone" id="telephone"  style={{ marginBottom: "10px" }} htmlFor="telephone">
                                     <FormLabel>Telephone</FormLabel>
-                                    <Input type='number' defaultValue='1' />
+                                    <Select name="telephone" id="telephone" onChange={props.handleChange} placeholder='Select the telephone' defaultValue='1'>
+                                        <option value='2'>Yes</option>
+                                        <option value='1'>No</option>
+                                    </Select>
                                 </FormControl>
                             )}
                         </Field>
